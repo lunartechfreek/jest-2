@@ -1,20 +1,16 @@
 let game = {
-    score: 0,
     currentGame: [],
     playerMoves: [],
+    score: 0,
     choices: ["button1", "button2", "button3", "button4"]
 };
 
 function newGame() {
-    game.score = 0;
     game.currentGame = [];
     game.playerMoves = [];
+    game.score = 0;
     showScore();
     addTurn();
-}
-
-function showScore() {
-    document.getElementById("score").innerText = game.score;
 }
 
 function addTurn() {
@@ -23,4 +19,15 @@ function addTurn() {
     // showTurns();
 }
 
-module.exports = { game, newGame, showScore, addTurn };
+function lightsOn(circ) {
+    document.getElementById(circ).classList.add("light");
+    setTimeout(function () {
+        document.getElementById(circ).classList.remove("light");
+    }, 400);
+}
+
+function showScore() {
+    document.getElementById("score").innerText = game.score;
+}
+
+module.exports = { game, newGame, showScore, addTurn, lightsOn };
